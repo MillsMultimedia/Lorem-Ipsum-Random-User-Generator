@@ -20,6 +20,8 @@ such as a page specific styesheets.
     <h1>Fake User Generator</h1>
     
     <form method='POST' action='/user'>
+    	<input type='hidden' name='_token' value='{{ csrf_token() }}'>
+
     	<lable>How many users? (max 20) </lable>
     	<input type='text' name='users'><br>
 
@@ -34,11 +36,32 @@ such as a page specific styesheets.
     	<lable>Password: </lable>
     	<input type='checkbox' name='password'><br>
 
+    	<lable>Avatar: </lable>
+    	<input type='checkbox' name='avatar'><br>
 
+    	<input type='submit' value='User Me'>
     </form>
 
-    <p>GENERATED TEXT GOES HERE</p>
+    @if(isset($users))
+        @foreach($users as $user)
+            <strong>{{ $user['name'] }}</strong><br>
+                
+            @if(isset($request['birthday']))
+                {{ $user['birthday'] }}<br>
+            @endif
 
+            @if(isset($request['email']))
+                {{ $user['email'] }}<br>
+            @endif
+
+            @if(isset($request['password']))
+                {{ $user['password'] }}<br>
+            @endif
+
+            <br>
+
+        @endforeach
+    @endif
 @stop
 
 

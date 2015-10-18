@@ -19,11 +19,6 @@ Route::get('/lorem', 'LoremController@getLorem');
 
 Route::post('/lorem', 'LoremController@postLorem');
 
-Route::get('/user', function () {
-    return view('layouts/user');
-});
+Route::get('/user', 'UserController@getUser');
 
-Route::post('/user', function () {
-    return view('layouts/user');
-});
-
+Route::post('/user', 'UserController@postUser');
