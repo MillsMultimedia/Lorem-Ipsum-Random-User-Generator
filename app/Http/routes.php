@@ -12,5 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/home');
 });
+
+Route::get('/lorem', 'LoremController@getLorem');
+
+Route::post('/lorem', 'LoremController@postLorem');
+
+Route::get('/user', function () {
+    return view('layouts/user');
+});
+
+Route::post('/user', function () {
+    return view('layouts/user');
+});
+
