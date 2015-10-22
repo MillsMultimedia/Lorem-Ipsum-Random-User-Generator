@@ -20,11 +20,17 @@ class LoremController extends Controller
 
     public function postLorem(Request $request)
     {
+
+        $messages = [
+            'required' => 'A paragraph count is required',
+            'numeric' => 'This needs to be a numeric value',
+            'max' => '10 paragraphs is more than enough for you'
+        ];
         
         // Validate form input
         $this->validate($request, [
             'paragraphs' => 'required|numeric|max:10',
-            ]);
+            ], $messages);
 
         // generate ipsum
         $generator = new \Badcow\LoremIpsum\Generator();

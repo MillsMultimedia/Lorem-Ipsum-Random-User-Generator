@@ -1,0 +1,54 @@
+#main {
+	background-color: #fff;
+	border-radius: 16px;
+	padding: 20px;
+	margin: 25px 0;
+}
+
+#footer {
+	margin-top: 2em;
+	font-weight: bold;
+	font-size: 150%;
+}
+
+#intro-header {
+	color: $123456;
+	padding-bottom: 1.5em;
+}
+
+
+#users {
+	max-width: 50px;
+}
+
+.options {
+	margin-right: 2em;
+}
+
+.user-card {
+	border:1px solid #c6cde0;
+	padding:8px;
+	margin: 1em;
+	border-radius:10px;
+	background-color: #eee;
+	-webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.44);
+	-moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.44);
+	box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.44);
+}
+
+.user-card strong {
+	font-size: 1.125em;
+}
+
+#paragraphs {
+	width: 50px;
+}
+
+#output {
+	margin-top: 2em;
+}
+
+#back {
+	margin-left: 6em;
+}
+

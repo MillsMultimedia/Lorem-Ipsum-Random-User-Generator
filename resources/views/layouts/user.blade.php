@@ -2,7 +2,7 @@
 
 
 @section('title')
-    The Web Developer's Friend | User Generator
+    The Superhero Starter Kit  |  Secret Identity Creator
 @stop
 
 
@@ -17,51 +17,87 @@ such as a page specific styesheets.
 
 
 @section('content')
-    <h1>Fake User Generator</h1>
-    
-    <form method='POST' action='/user'>
-    	<input type='hidden' name='_token' value='{{ csrf_token() }}'>
+    <div class='col-xs-12 col-sm-6 pull-right'><img src='img/heroes.jpg' style='width:100%;'/></div>
 
-    	<lable>How many users? (max 20) </lable>
-    	<input type='text' name='users'><br>
+    <div class='col-xs-12 col-sm-6' id='main'>
+        <h1>Secret Identity Generator</h1>
+        
+        <form method='POST' action='/user'>
+        	<input type='hidden' name='_token' value='{{ csrf_token() }}'>
 
-    	<h4>Options</h4>
+            <div class='form-group'>
+            	<label>How many users? (max 12) </label>
+            	<input type='text' name='users' class='form-control' id='users'>
 
-    	<lable>Birthday: </lable>
-    	<input type='checkbox' name='birthday'><br>
+                <!-- Display validation errors -->
+                @if(count($errors) > 0)
+                    @foreach ($errors->all() as $error)
+                        <small style='color:#f00;'>{{$error}}</small><br>
+                    @endforeach
+                @endif
+            </div>
 
-    	<lable>Email: </lable>
-    	<input type='checkbox' name='email'><br>
+        	<h4>Options</h4>
 
-    	<lable>Password: </lable>
-    	<input type='checkbox' name='password'><br>
+            <div class='form-group'>
+            	<label class='options'>Birthday: 
+            	<input type='checkbox' name='birthday'>
+                </label>
 
-    	<lable>Avatar: </lable>
-    	<input type='checkbox' name='avatar'><br>
+            	<label class='options'>Email:
+            	<input type='checkbox' name='email'>
+                </label>
 
-    	<input type='submit' value='User Me'>
-    </form>
+            	<label class='options'>Secret Password: 
+            	<input type='checkbox' name='password'>
+                </label>
 
-    @if(isset($users))
-        @foreach($users as $user)
-            <strong>{{ $user['name'] }}</strong><br>
-                
-            @if(isset($request['birthday']))
-                {{ $user['birthday'] }}<br>
+            	<label class='options'>Avatar: 
+            	<input type='checkbox' name='avatar'>
+                </label>
+            </div>
+
+            <input type='submit' value='User Me' class='btn btn-primary'>
+        </form>
+    </div>
+    <div class='clearfix'></div>
+
+    <div class='row'>
+        <div class='container'>
+            @if(isset($users))
+                @foreach($users as $user)
+                    <div class='col-md-5 col-xs-12 user-card'>
+                        @if(isset($request['avatar']))
+                            <img src='{{ $user['avatar'] }}' class='col-xs-6 pull-left'>
+                        @endif
+                        
+                        <div class='col-xs-6'>
+                            <strong>{{ $user['name'] }}</strong><br>
+
+                            @if(isset($request['birthday']))
+                                {{ $user['birthday'] }}<br>
+                            @endif
+
+                            @if(isset($request['email']))
+                                {{ $user['email'] }}<br>
+                            @endif
+
+                            @if(isset($request['password']))
+                                {{ $user['password'] }}<br>
+                            @endif
+
+                        </div>
+                    </div>
+
+                @endforeach
             @endif
+        </div>
+    </div>
 
-            @if(isset($request['email']))
-                {{ $user['email'] }}<br>
-            @endif
+    <footer class='container' id='footer'>
+        &copy; {{ date('Y') }}  |   <a href='/'>Back to main</a>
+    </footer>
 
-            @if(isset($request['password']))
-                {{ $user['password'] }}<br>
-            @endif
-
-            <br>
-
-        @endforeach
-    @endif
 @stop
 
 

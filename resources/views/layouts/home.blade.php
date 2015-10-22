@@ -2,7 +2,7 @@
 
 
 @section('title')
-    The Web Developer's Friend
+    The Superhero Starter Kit
 @stop
 
 
@@ -12,14 +12,24 @@ Use it to add specific things that *this* View needs in the head,
 such as a page specific styesheets.
 --}}
 @section('head')
-    
+ <style>
+    body { 
+	  background: url('img/bkg.jpg') no-repeat center center fixed; /*images from wallpaperup.com & blog.storplaceselfstorage.com */
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+</style>
 @stop
 
 
 @section('content')
-    <h1>Choose your adventure</h1>
-    <a href="/lorem"><button class="btn btn-primary">Give Me Some Lorem Ipsum</button></a>
-    <a href="/user"><button class="btn btn-warning">Give Me A Fake User</button></a>
+	<div class='container text-center' id='main'>
+	    <h1 id='intro-header'>Become a superhero</h1>
+	    <a href='/lorem'><button class='btn btn-primary pull-left'>I Need A Fake Backstory</button></a>
+	    <a href='/user'><button class='btn btn-success pull-right'>I Need A Secret Identity (or 12)</button></a>
+	</div>
 @stop
 
 
